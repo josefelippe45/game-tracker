@@ -10,7 +10,8 @@ data class SignupUIState(
     val isLoading: Boolean = false,
     val email: String = "",
     val name: String = "",
-    val password: String = ""
+    val password: String = "",
+    val passwordConfirmation: String = "",
 )
 
 class SignupViewModel: ViewModel() {
@@ -27,5 +28,9 @@ class SignupViewModel: ViewModel() {
 
     fun onPasswordChange(password: String) {
         this._uiState.update { current -> current.copy(password = password) }
+    }
+
+    fun onPasswordConfirmationChange(password: String) {
+        this._uiState.update { current -> current.copy(passwordConfirmation = password) }
     }
 }

@@ -1,8 +1,11 @@
 package com.josefelippe45.gametracker.ui.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
@@ -36,9 +39,11 @@ fun GTButton(
         enabled = enabled && !isLoading,
         modifier = modifier,
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFF253745),
+            containerColor = Color(0xFF11212D),
             contentColor = Color(0xFFCCD0CF),
-        )
+        ),
+        border = BorderStroke(1.dp, Color(0xFF253745)),
+        shape = RoundedCornerShape(16.dp)
     ) {
         if (isLoading) {
             CircularProgressIndicator(modifier = Modifier.size(20.dp))
@@ -46,9 +51,9 @@ fun GTButton(
         }
         Text(text,
             textAlign = TextAlign.Center,
-            fontWeight = FontWeight(600),
+            fontWeight = FontWeight.Bold,
             fontSize = TextUnit(value = 16f, type = TextUnitType.Sp),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)
         )
     }
 

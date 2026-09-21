@@ -13,6 +13,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -51,34 +54,31 @@ fun LoginScreen(
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
         )
-        GTBackButton(
-            modifier = Modifier.absoluteOffset(x = 16.dp, y = 24.dp),
-            onClick = onBack
-        )
         Column(
             verticalArrangement = Arrangement.spacedBy(24.dp),
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
                 .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
-                .background(color = Color(0xFF11212D))
+                .background(color = Color(0xFF06141B))
                 .padding(horizontal = 32.dp, vertical = 32.dp),
 
         ) {
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    "Bem vindo",
+                    "Bem-vindo",
                     color = Color(0xFFCCD0CF),
-                    fontWeight = FontWeight(500),
+                    fontWeight = FontWeight.Bold,
                     fontSize = TextUnit(value = 24f, type = TextUnitType.Sp)
                 )
                 Text(
                     "Faça login na sua conta",
-                    color = Color(0xFFCCD0CF),
-                    fontWeight = FontWeight(500),
+                    color = Color(0xFF9BA8AB),
+                    fontWeight = FontWeight.Medium,
                     fontSize = TextUnit(value = 14f, type = TextUnitType.Sp)
                 )
             }
@@ -90,14 +90,15 @@ fun LoginScreen(
                 GTTextField(
                     modifier = Modifier.fillMaxWidth(),
                     value = uiState.email,
-                    label = "Email",
-                    placeholder = "example@example.com",
+                    label = "Seu e-mail",
+                    leadingIcon = Icons.Default.Email,
                     onChange = { text -> viewModel.onEmailChange(text) }
                 )
                 GTTextField(
                     modifier = Modifier.fillMaxWidth(),
                     value = uiState.password,
-                    label = "Password",
+                    label = "Sua senha",
+                    leadingIcon = Icons.Default.Lock,
                     onChange = { text -> viewModel.onPasswordChange(text) }
                 )
             }
@@ -113,13 +114,13 @@ fun LoginScreen(
                     Text(
                         "Ainda não tem conta?",
                         color = Color(0xFFCCD0CF),
-                        fontWeight = FontWeight(500),
+                        fontWeight = FontWeight.Medium,
                         fontSize = TextUnit(value = 14f, type = TextUnitType.Sp)
                     )
                     Text(
                         "Cadastre-se",
                         color = Color(0xFF9BA8AB),
-                        fontWeight = FontWeight(500),
+                        fontWeight = FontWeight.SemiBold,
                         fontSize = TextUnit(value = 14f, type = TextUnitType.Sp),
                         textDecoration = TextDecoration.Underline,
                     )
@@ -128,12 +129,4 @@ fun LoginScreen(
         }
     }
 
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GTTextFieldPreview() {
-    GameTrackerTheme() {
-        LoginScreen()
-    }
 }

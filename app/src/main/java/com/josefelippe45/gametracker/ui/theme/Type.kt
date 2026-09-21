@@ -21,6 +21,7 @@ val InterFontFamily = FontFamily(
     Font(googleFont = interFont, fontProvider = provider, weight = FontWeight.Medium),
     Font(googleFont = interFont, fontProvider = provider, weight = FontWeight.SemiBold),
     Font(googleFont = interFont, fontProvider = provider, weight = FontWeight.Bold),
+    Font(googleFont = interFont, fontProvider = provider, weight = FontWeight.ExtraBold),
 )
 
 // Set of Material typography styles to start with
