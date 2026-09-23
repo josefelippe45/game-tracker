@@ -2,10 +2,14 @@ package com.josefelippe45.gametracker.ui.feature.groups
 
 import androidx.compose.runtime.MutableState
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.josefelippe45.gametracker.data.auth.AuthRepository
+import com.josefelippe45.gametracker.data.auth.FirebaseAuthRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import java.util.UUID
 
 data class User(
@@ -24,7 +28,9 @@ data class GroupsUiState(
     val isLoading: Boolean = false
 )
 
-class GroupsViewModel: ViewModel() {
+class GroupsViewModel(
+    private val authRepository: AuthRepository = FirebaseAuthRepository()
+): ViewModel() {
     private val _uiState = MutableStateFlow(GroupsUiState())
     val uiState: StateFlow<GroupsUiState> = _uiState.asStateFlow()
 
@@ -37,5 +43,9 @@ class GroupsViewModel: ViewModel() {
 
     fun removeGroup(id: String) {
         _uiState.update { current -> current.copy(groups = current.groups.filter { it.id != id }) }
+    }
+
+    fun logout() {
+        authRepository.logout()
     }
 }

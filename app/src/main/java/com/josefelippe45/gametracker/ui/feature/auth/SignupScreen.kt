@@ -49,7 +49,7 @@ fun SignupScreen(
             .padding(horizontal = 24.dp, vertical = 16.dp)
     ) {
         GTBackButton(
-            modifier = Modifier.absoluteOffset(x = 24.dp, y = 16.dp),
+            modifier = Modifier.absoluteOffset(x = 0.dp, y = 16.dp),
             onClick = onBack
         )
         Column(
@@ -57,7 +57,7 @@ fun SignupScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Column(
-                modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                modifier = Modifier.fillMaxWidth().padding(top = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
@@ -179,5 +179,13 @@ fun FormRow(
             leadingIcon = leadingIcon,
             onChange = onChangeField
         )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SignupScreenPreview() {
+    GameTrackerTheme() {
+        SignupScreen()
     }
 }

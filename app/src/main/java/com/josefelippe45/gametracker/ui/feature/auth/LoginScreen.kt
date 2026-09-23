@@ -103,10 +103,12 @@ fun LoginScreen(
                 )
             }
             Column(
-                modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                GTButton(text = "Login", onClick = fun () {})
+                GTButton(text = "Login", onClick = { viewModel.authenticate() }, isLoading = uiState.isLoading)
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(space = 8.dp, alignment = Alignment.CenterHorizontally),
